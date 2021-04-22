@@ -54,3 +54,46 @@ alert(fruta.cor);*/
 // alert(d.getHours());
 // alert(d.getMinutes());
 // alert(d.getSeconds);
+
+// function soma(n1, n2) {
+//     return n1 + n2;
+// }
+
+// var validar = 0;
+
+// function validaIdade(idade){
+//     var validar;
+//     if (idade >= 18){
+//         validar = true
+//     }else{
+//         validar = false
+//     }
+//     return validar;
+// }
+
+// var idade = prompt("Qual sua idade");
+// console.log(validaIdade(idade));
+
+// alert(soma(5, 10));
+
+function button(){
+    document.getElementById("agradecimento").innerHTML = "<b>Obrigado por clicar</b>";
+    //console.log(document.getElementById("agradecimento"));
+    //alert("Obrigado por clicar")
+}
+
+function redirecionar(){
+    window.open("http://empodereconsultoria.com.br/profissional/");
+    //window.location.href = "http://empodereconsultoria.com.br/profissional/";
+}
+
+function trocar(elemento){
+    //document.getElementById("mousemove").innerHTML = "Obrigado por passar o mouse";
+    elemento.innerHTML = "Obrigado por passar o mouse";
+    //alert("trocar texto")
+}
+
+function voltar(elemento){
+    document.getElementById("mousemove").innerHTML = "Passe o mouse aqui";
+}
+
