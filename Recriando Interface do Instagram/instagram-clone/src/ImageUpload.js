@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import {Button } from '@material-ui/core';
-import { storage, db } from '../firebase';
-import firebase from 'firebase';
+import { Button } from '@material-ui/core';
+import { storage, db } from './firebase';
+import firebase from "firebase";
+import './ImageUpload.css';
 
-
-
-function ImgageUpload({username}) {
+function ImageUpload({username}) {
     const [caption , setCaption] = useState('');
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
@@ -37,10 +36,10 @@ function ImgageUpload({username}) {
                 .getDownloadURL()
                 .then(url => {
                     db.collection("posts").add({
-                        timestamp : firebase.firestore.FieldValue.serverTimestamp(),
-                        caption : caption,
-                        imgUrl : url,
-                        username : username
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        caption: caption,
+                        imageUrl: url,
+                        username: username
                     });
 
                     setProgress(0);
@@ -48,14 +47,13 @@ function ImgageUpload({username}) {
                     setImage(null);
                 });
             }
-        )
-    }
+        );
+    };
     
     return (
-        <div>
-            <h1>jkdksj</h1>
-            
-            <input type="text" placeholder="Enter a caption..." onChange={event => setCaption(event.target)} value={caption} />
+        <div className="ImageUpload">
+            <progress className="imageupload_progress" value={progress} max="100" /> 
+            <input type="text" placeholder="Enter a caption..." onChange={event => setCaption(event.target.value)} value={caption} />
             <input type="file" onChange={handleChange}/>
             <Button onClick={handleUpload}>
                 Upload
@@ -64,4 +62,4 @@ function ImgageUpload({username}) {
     )
 }
 
-export default ImgageUpload
+export default ImageUpload

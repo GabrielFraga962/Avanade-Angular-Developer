@@ -6,6 +6,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import {Button, Input} from '@material-ui/core';
 import ImageUpload from './ImageUpload';
+import InstagramEmbed from 'react-instagram-embed';
 
 
 function getModalStyle() {
@@ -60,7 +61,7 @@ function App() {
  
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp','desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id, post: doc.data()})));
     })
@@ -88,9 +89,7 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <ImageUpload />
-      
+    <div className="app"> 
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -160,10 +159,9 @@ function App() {
       <div className="app_header">
         <img
         className="app_headerImage" 
-        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" alt="Logo-instagram" />
-      </div>
-
-      { user ? (
+        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" alt="Logo-instagram" 
+        />
+        { user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ): (
         <div className="app_loginContainer">
@@ -171,14 +169,39 @@ function App() {
         <Button onClick={() => setOpen(true)}>Sign Up</Button>
         </div>
       )}
+      </div>
 
-      <h1>O TESTE do nosso progresso nãp é se acrescentamos mais a abundância dos que tem muito</h1>
-
-      {
-        posts.map(({id, post}) => (
-          <Post key={id} username={post.username } caption={post.caption} imageUrl={post.imageUrl} />
-        ))
-      }
+      <div className="app_posts">
+        <div className="app_postsLeft">
+          {
+          posts.map(({id, post}) => (
+            <Post key={id} postId={id} user={user} username={post.username } caption={post.caption} imageUrl={post.imageUrl} />
+          ))
+        }
+        </div>
+      <div className="app_postsRight">
+      < InstagramEmbed
+        url = 'https://www.instagram.com/'
+        maxWidth = { 320 }
+        hideCaption = { false }
+        containerTagName ='div'
+        protocolo = ''
+        injectScript
+        onLoading = { ( ) => { } }
+        onSuccess = { ( ) => { } }
+        onAfterRender = { ( ) => { }}
+        onFailure = { ( ) => { } }
+      />
+      </div>
+      <img className="post_especial" src="https://i.imgur.com/lXER3kN.png" alt="" />
+    </div>
+      
+      
+        {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ): (
+        <h3>Sorry you need to login to upload</h3>
+      )}
       
     </div>
   );
