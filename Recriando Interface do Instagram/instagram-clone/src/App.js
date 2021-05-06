@@ -8,7 +8,6 @@ import { Button, Input } from '@material-ui/core';
 import ImageUpload from './ImageUpload';
 import InstagramEmbed from 'react-instagram-embed';
 
-
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -173,35 +172,41 @@ function App() {
       </div>
 
       <div className="app_posts">
-        {
-          posts.map(({ id, post }) => (
-            <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-          ))
-        }
+        <div className="app_postsLeft">
+          {
+            posts.map(({ id, post }) => (
+              <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+            ))
+          }
+        </div>
+        <div className="app_postsRight">
+            <InstagramEmbed
+            url='https://www.instagram.com/p/COI4TwWHfOj/'
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName='div'
+            protocol=''
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </div>
+        <div className="app_adicional">
+          <img src='https://i.imgur.com/lXER3kN.png' alt=''/>
+       </div>
       </div>
-      <InstagramEmbed
-        url='https://www.instagram.com/p/COI4TwWHfOj/'
-        maxWidth={320}
-        hideCaption={false}
-        containerTagName='div'
-        protocol=''
-        injectScript
-        onLoading={() => {}}
-        onSuccess={() => {}}
-        onAfterRender={() => {}}
-        onFailure={() => {}}
-      />
-
-
+      
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
         <h3>Sorry you need to login to Upload</h3>
       )}
-
     </div>
-    
+       
   );
+  
 }
 
 export default App;
