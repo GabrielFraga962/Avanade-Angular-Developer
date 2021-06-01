@@ -1,4 +1,4 @@
-## Repositório do Bootcamp Avanade Angular
+## Repositório do Bootcamp Avanade Angular 🧑‍💻
 
 ![Dio](https://i.imgur.com/wArVZgM.jpg)
 
