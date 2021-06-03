@@ -10,7 +10,13 @@ import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
 import { CadastroClientesComponent } from './cadastro-clientes/cadastro-clientes.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeLogadaComponent } from './home-logada/home-logada.component';
+import { LoginComponent } from './login/login.component';
+import { CadastroConcluidoComponent } from './cadastro-concluido/cadastro-concluido.component';
+import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
+import { AuthGuard } from 'src/auth.guard';
+import { AuthService } from 'src/auth.service';
 
 
 @NgModule({
@@ -19,15 +25,20 @@ import { CadastroClientesComponent } from './cadastro-clientes/cadastro-clientes
     HeaderComponent,
     ContentComponent,
     FooterComponent,
-    CadastroClientesComponent
+    CadastroClientesComponent,
+    HomeLogadaComponent,
+    LoginComponent,
+    CadastroConcluidoComponent,
+    AcessoNegadoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
