@@ -1,4 +1,23 @@
-# TraningBank
+# TraningBank 💰🏦
+
+- A ideia é desenvolver um SPA (aplicação de página única) Internet Banking com o Angular na Versão 6.
+-
+# Detalhes sobre o projeto
+No final da série pretendo criar um CRUD , com o fluxo natural features de um Internet Banking, com recursos como:
+- Cadastro de clientes;
+- Acesso a minha conta;
+- Saldos;
+- Extrato.
+
+# Pré-requisitos 📝
+
+- Node.js (v8.11.3)
+- Angular 6 (v6.0.9)
+- Angular material (v6.3.3)
+- Bootstrap ( v4.1.2)
+- JSON Server (v0.14.0)
+
+Editor de Texto para o tutorial vou utilizar o [Vs Code](https://code.visualstudio.com/) mas fique a vontade para escolher seu editor de preferência deixo como sugestão (VsCode, [Sublime](https://www.sublimetext.com/), [Notepad++](https://notepad-plus-plus.org/)).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
